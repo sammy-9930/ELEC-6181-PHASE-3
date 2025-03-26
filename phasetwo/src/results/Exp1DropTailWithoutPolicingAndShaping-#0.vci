@@ -1,0 +1,767 @@
+file 30299 1742958976                                           
+version 2
+run Exp1DropTailWithoutPolicingAndShaping-0-20250325-23:16:04-33188
+attr configname Exp1DropTailWithoutPolicingAndShaping
+attr datetime 20250325-23:16:04
+attr experiment Exp1DropTailWithoutPolicingAndShaping
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network phasetwo
+attr processid 33188
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param **.ppp[*].ppp.queue.typename "\"DropTailQueue\""
+param **.eth[*].mac.queue.typename "\"EtherQosQueue\""
+param **.eth[*].mac.queue.dataQueue.typename "\"DropTailQueue\""
+param **.queue.packetCapacity 100
+param **.H?.numApps 3
+param **.H1.app[0].typename "\"UdpBasicBurst\""
+param **.H1.app[0].destAddresses "\"H2\""
+param **.H1.app[0].chooseDestAddrMode "\"once\""
+param **.H1.app[0].destPort 1000
+param **.H1.app[0].startTime uniform(1s,2s)
+param **.H1.app[0].stopTime 1200s
+param **.H1.app[0].messageLength 172B
+param **.H1.app[0].burstDuration exponential(0.352s)
+param **.H1.app[0].sleepDuration exponential(0.650s)
+param **.H1.app[0].sendInterval 20ms
+param **.H2.app[0].typename "\"UdpBasicBurst\""
+param **.H2.app[0].localPort 1000
+param **.H2.app[0].delayLimit 0ms
+param **.H2.app[0].destAddresses "\"\""
+param **.H2.app[0].chooseDestAddrMode "\"once\""
+param **.H2.app[0].destPort 0
+param **.H2.app[0].messageLength 0B
+param **.H2.app[0].burstDuration 0s
+param **.H2.app[0].sleepDuration 0s
+param **.H2.app[0].sendInterval 0ms
+param **.H1.app[1].typename "\"UdpBasicApp\""
+param **.H1.app[1].destPort 2000
+param **.H1.app[1].startTime uniform(1s,2s)
+param **.H1.app[1].stopTime 1200s
+param **.H1.app[1].sendInterval 40ms
+param **.H1.app[1].messageLength 500B
+param **.H1.app[1].destAddresses "\"H2\""
+param **.H2.app[1].typename "\"UdpSink\""
+param **.H2.app[1].localPort 2000
+param **.H1.app[2].typename "\"TcpBasicClientApp\""
+param **.H1.app[2].connectAddress "\"H2\""
+param **.H1.app[2].connectPort 3000
+param **.H1.app[2].numRequestsPerSession 1
+param **.H1.app[2].requestLength 50B
+param **.H1.app[2].replyLength 100B
+param **.H1.app[2].thinkTime 40ms
+param **.H1.app[2].idleInterval 10s
+param **.H1.app[2].stopTime 1200s
+param **.H2.app[2].typename "\"TcpGenericServerApp\""
+param **.H2.app[2].localPort 3000
+param **.edgeDatarate 32kbps
+param **.coreDatarate 16kbps
+param **.R1.eth[*].ingressTC.typename "\"TC1\""
+param **.R14.eth[*].ingressTC.typename "\"TC1\""
+param **.ingressTC.numClasses 3
+param **.ingressTC.classifier.filters "xmldoc(\"filters.xml\", \"//experiment[@id='default']\")"
+param **.ingressTC.marker.dscps "\"AF11 AF21 AF31 AF41 BE\""
+param **.queue.typename "\"EtherQosQueue\""
+param **.queue.dataQueue.typename "\"DropTailQueue\""
+param **.queue.packetCapacity 100
+param **.queue.dataQueue.packetCapacity 100
+param **.R*.hasOspf true
+param **.R*.ospf.ospfConfig "xmldoc(\"OSPFConfig.xml\")"
+
+vector 0 phasetwo.H1.ethg$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 1 phasetwo.H2.ethg$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 2 phasetwo.R1.pppg$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 3 phasetwo.R1.pppg$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 4 phasetwo.R1.ethg$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 5 phasetwo.R2.pppg$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 6 phasetwo.R2.pppg$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 7 phasetwo.R2.pppg$o[2].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 8 phasetwo.R3.pppg$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 9 phasetwo.R3.pppg$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 10 phasetwo.R3.pppg$o[2].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 11 phasetwo.R4.pppg$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 12 phasetwo.R4.pppg$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 13 phasetwo.R5.pppg$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 14 phasetwo.R5.pppg$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 15 phasetwo.R5.pppg$o[2].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 16 phasetwo.R8.pppg$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 17 phasetwo.R8.pppg$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 18 phasetwo.R8.pppg$o[2].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 19 phasetwo.R13.pppg$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 20 phasetwo.R13.pppg$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 21 phasetwo.R6.pppg$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 22 phasetwo.R6.pppg$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 23 phasetwo.R6.pppg$o[2].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 24 phasetwo.R11.pppg$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 25 phasetwo.R11.pppg$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 26 phasetwo.R11.pppg$o[2].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 27 phasetwo.R10.pppg$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 28 phasetwo.R10.pppg$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 29 phasetwo.R10.pppg$o[2].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 30 phasetwo.R14.pppg$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 31 phasetwo.R14.pppg$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 32 phasetwo.R14.ethg$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 33 phasetwo.R12.pppg$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 34 phasetwo.R12.pppg$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 35 phasetwo.R12.pppg$o[2].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 36 phasetwo.R7.pppg$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 37 phasetwo.R7.pppg$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 38 phasetwo.R9.pppg$o[0].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 39 phasetwo.R9.pppg$o[1].channel busy:vector ETV
+attr interpolationmode sample-hold
+attr source channelBusy
+vector 40 phasetwo.R1.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 41 phasetwo.R1.ppp[1].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 42 phasetwo.R2.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 43 phasetwo.R2.ppp[1].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 44 phasetwo.R2.ppp[2].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 45 phasetwo.R3.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 46 phasetwo.R3.ppp[1].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 47 phasetwo.R3.ppp[2].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 48 phasetwo.R4.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 49 phasetwo.R4.ppp[1].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 50 phasetwo.R5.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 51 phasetwo.R5.ppp[1].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 52 phasetwo.R5.ppp[2].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 53 phasetwo.R8.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 54 phasetwo.R8.ppp[1].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 55 phasetwo.R8.ppp[2].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 56 phasetwo.R13.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 57 phasetwo.R13.ppp[1].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 58 phasetwo.R6.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 59 phasetwo.R6.ppp[1].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 60 phasetwo.R6.ppp[2].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 61 phasetwo.R11.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 62 phasetwo.R11.ppp[1].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 63 phasetwo.R11.ppp[2].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 64 phasetwo.R10.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 65 phasetwo.R10.ppp[1].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 66 phasetwo.R10.ppp[2].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 67 phasetwo.R14.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 68 phasetwo.R14.ppp[1].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 69 phasetwo.R12.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 70 phasetwo.R12.ppp[1].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 71 phasetwo.R12.ppp[2].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 72 phasetwo.R7.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 73 phasetwo.R7.ppp[1].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 74 phasetwo.R9.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 75 phasetwo.R9.ppp[1].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 76 phasetwo.R6.ppp[0].ppp rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 77 phasetwo.R6.ppp[0].ppp.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 78 phasetwo.R6.ppp[0].ppp.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 79 phasetwo.R6.ppp[0].ppp.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 80 phasetwo.R6.ppp[0].ppp.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 81 phasetwo.R6.ppp[0].ppp txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 82 phasetwo.R11.ppp[2].ppp rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 83 phasetwo.R11.ppp[2].ppp.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 84 phasetwo.R11.ppp[2].ppp.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 85 phasetwo.R11.ppp[2].ppp.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 86 phasetwo.R11.ppp[2].ppp.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 87 phasetwo.R11.ppp[2].ppp txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 88 phasetwo.R4.ppp[1].ppp rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 89 phasetwo.R4.ppp[1].ppp.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 90 phasetwo.R4.ppp[1].ppp.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 91 phasetwo.R4.ppp[1].ppp.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 92 phasetwo.R4.ppp[1].ppp.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 93 phasetwo.R4.ppp[1].ppp txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 94 phasetwo.R6.ppp[2].ppp rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 95 phasetwo.R6.ppp[2].ppp.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 96 phasetwo.R6.ppp[2].ppp.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 97 phasetwo.R6.ppp[2].ppp.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 98 phasetwo.R6.ppp[2].ppp.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 99 phasetwo.R6.ppp[2].ppp txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 100 phasetwo.R2.ppp[1].ppp rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 101 phasetwo.R2.ppp[1].ppp.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 102 phasetwo.R2.ppp[1].ppp.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 103 phasetwo.R2.ppp[1].ppp.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 104 phasetwo.R2.ppp[1].ppp.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 105 phasetwo.R2.ppp[1].ppp txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 106 phasetwo.R9.ppp[0].ppp rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 107 phasetwo.R9.ppp[0].ppp.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 108 phasetwo.R9.ppp[0].ppp.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 109 phasetwo.R9.ppp[0].ppp.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 110 phasetwo.R9.ppp[0].ppp.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 111 phasetwo.R9.ppp[0].ppp txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 112 phasetwo.R14.ppp[0].ppp rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 113 phasetwo.R14.ppp[0].ppp.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 114 phasetwo.R14.ppp[0].ppp.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 115 phasetwo.R14.ppp[0].ppp.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 116 phasetwo.R14.ppp[0].ppp.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 117 phasetwo.R14.ppp[0].ppp txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 118 phasetwo.R5.ppp[0].ppp rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 119 phasetwo.R5.ppp[0].ppp.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 120 phasetwo.R5.ppp[0].ppp.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 121 phasetwo.R5.ppp[0].ppp.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 122 phasetwo.R5.ppp[0].ppp.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 123 phasetwo.R5.ppp[0].ppp txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 124 phasetwo.R3.ppp[2].ppp rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 125 phasetwo.R3.ppp[2].ppp.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 126 phasetwo.R3.ppp[2].ppp.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 127 phasetwo.R3.ppp[2].ppp.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 128 phasetwo.R3.ppp[2].ppp.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 129 phasetwo.R3.ppp[2].ppp txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 130 phasetwo.R5.ppp[0].ppp rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 131 phasetwo.R5.ppp[0].ppp passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 132 phasetwo.R11.ppp[0].ppp rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 133 phasetwo.R11.ppp[0].ppp.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 134 phasetwo.R11.ppp[0].ppp.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 135 phasetwo.R11.ppp[0].ppp.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 136 phasetwo.R11.ppp[0].ppp.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 137 phasetwo.R11.ppp[0].ppp txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 138 phasetwo.R2.ppp[0].ppp rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 139 phasetwo.R2.ppp[0].ppp.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 140 phasetwo.R2.ppp[0].ppp.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 141 phasetwo.R2.ppp[0].ppp.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 142 phasetwo.R2.ppp[0].ppp.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 143 phasetwo.R2.ppp[0].ppp txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+0	26429 9 0 0 0 0 1 0 0 0 0
+1	26438 9 0 0 0 0 1 0 0 0 0
+2	26447 9 0 0 0 0 1 0 0 0 0
+3	26456 9 0 0 0 0 1 0 0 0 0
+4	26465 9 0 0 0 0 1 0 0 0 0
+5	26474 32 0 41 0 0.092510047472 2 0 1 1 1
+6	26506 32 0 19 0 0.089228422814 2 0 1 1 1
+7	26538 9 0 0 0 0 1 0 0 0 0
+8	26547 9 0 0 0 0 1 0 0 0 0
+9	26556 9 0 0 0 0 1 0 0 0 0
+10	26565 34 0 31 0 0.090262027451 2 0 1 1 1
+11	26599 10 0 0 0 0 1 0 0 0 0
+12	26609 33 0 13 0 0.08782770417 2 0 1 1 1
+13	26642 34 0 28 0 0.089873400851 2 0 1 1 1
+14	26676 10 0 0 0 0 1 0 0 0 0
+15	26686 10 0 0 0 0 1 0 0 0 0
+16	26696 10 0 0 0 0 1 0 0 0 0
+17	26706 10 0 0 0 0 1 0 0 0 0
+18	26716 10 0 0 0 0 1 0 0 0 0
+19	26726 10 0 0 0 0 1 0 0 0 0
+20	26736 10 0 0 0 0 1 0 0 0 0
+21	26746 33 0 7 0 0.072648761897 2 0 1 1 1
+22	26779 10 0 0 0 0 1 0 0 0 0
+23	26789 34 0 16 0 0.088966053439 2 0 1 1 1
+24	26823 34 0 38 0 0.092473993728 2 0 1 1 1
+25	26857 10 0 0 0 0 1 0 0 0 0
+26	26867 34 0 10 0 0.087563445195 2 0 1 1 1
+27	26901 10 0 0 0 0 1 0 0 0 0
+28	26911 10 0 0 0 0 1 0 0 0 0
+29	26921 10 0 0 0 0 1 0 0 0 0
+30	26931 34 0 25 0 0.089792504552 2 0 1 1 1
+31	26965 10 0 0 0 0 1 0 0 0 0
+32	26975 10 0 0 0 0 1 0 0 0 0
+33	26985 10 0 0 0 0 1 0 0 0 0
+34	26995 10 0 0 0 0 1 0 0 0 0
+35	27005 10 0 0 0 0 1 0 0 0 0
+36	27015 10 0 0 0 0 1 0 0 0 0
+37	27025 10 0 0 0 0 1 0 0 0 0
+38	27035 34 0 22 0 0.089523351139 2 0 1 1 1
+39	27069 10 0 0 0 0 1 0 0 0 0
+40	27079 10 0 0 0 0 1 0 0 0 0
+41	27089 10 0 0 0 0 1 0 0 0 0
+42	27099 34 0 41 0 0.092510047472 2 0 1 1 1
+43	27133 34 0 19 0 0.089228422814 2 0 1 1 1
+44	27167 10 0 0 0 0 1 0 0 0 0
+45	27177 10 0 0 0 0 1 0 0 0 0
+46	27187 10 0 0 0 0 1 0 0 0 0
+47	27197 34 0 31 0 0.090262027451 2 0 1 1 1
+48	27231 10 0 0 0 0 1 0 0 0 0
+49	27241 33 0 13 0 0.08782770417 2 0 1 1 1
+50	27274 34 0 28 0 0.089873400851 2 0 1 1 1
+51	27308 10 0 0 0 0 1 0 0 0 0
+52	27318 10 0 0 0 0 1 0 0 0 0
+53	27328 10 0 0 0 0 1 0 0 0 0
+54	27338 10 0 0 0 0 1 0 0 0 0
+55	27348 10 0 0 0 0 1 0 0 0 0
+56	27358 10 0 0 0 0 1 0 0 0 0
+57	27368 10 0 0 0 0 1 0 0 0 0
+58	27378 57 0 32 0 0.090398761897 3 0 1 1 1
+59	27435 10 0 0 0 0 1 0 0 0 0
+60	27445 34 0 16 0 0.088966053439 2 0 1 1 1
+61	27479 34 0 38 0 0.092473993728 2 0 1 1 1
+62	27513 10 0 0 0 0 1 0 0 0 0
+63	27523 34 0 10 0 0.087563445195 2 0 1 1 1
+64	27557 10 0 0 0 0 1 0 0 0 0
+65	27567 10 0 0 0 0 1 0 0 0 0
+66	27577 10 0 0 0 0 1 0 0 0 0
+67	27587 34 0 25 0 0.089792504552 2 0 1 1 1
+68	27621 10 0 0 0 0 1 0 0 0 0
+69	27631 10 0 0 0 0 1 0 0 0 0
+70	27641 10 0 0 0 0 1 0 0 0 0
+71	27651 10 0 0 0 0 1 0 0 0 0
+72	27661 10 0 0 0 0 1 0 0 0 0
+73	27671 10 0 0 0 0 1 0 0 0 0
+74	27681 34 0 22 0 0.089523351139 2 0 1 1 1
+75	27715 10 0 0 0 0 1 0 0 0 0
+76	27725 24 7 7 0.072648761897 0.072648761897 1 64 64 64 4096
+77	27749 24 7 7 0.072648761897 0.072648761897 1 64 64 64 4096
+78	27773 46 7 7 0.072648761897 0.072648761897 2 0 1 1 1
+79	27819 24 7 7 0.072648761897 0.072648761897 1 64 64 64 4096
+80	27843 23 7 7 0.072648761897 0.072648761897 1 0 0 0 0
+81	27866 24 7 7 0.072648761897 0.072648761897 1 71 71 71 5041
+82	27890 25 10 10 0.087563445195 0.087563445195 1 64 64 64 4096
+83	27915 25 10 10 0.087563445195 0.087563445195 1 64 64 64 4096
+84	27940 48 10 10 0.087563445195 0.087563445195 2 0 1 1 1
+85	27988 25 10 10 0.087563445195 0.087563445195 1 64 64 64 4096
+86	28013 24 10 10 0.087563445195 0.087563445195 1 0 0 0 0
+87	28037 25 10 10 0.087563445195 0.087563445195 1 71 71 71 5041
+88	28062 24 13 13 0.08782770417 0.08782770417 1 64 64 64 4096
+89	28086 24 13 13 0.08782770417 0.08782770417 1 64 64 64 4096
+90	28110 46 13 13 0.08782770417 0.08782770417 2 0 1 1 1
+91	28156 24 13 13 0.08782770417 0.08782770417 1 64 64 64 4096
+92	28180 23 13 13 0.08782770417 0.08782770417 1 0 0 0 0
+93	28203 24 13 13 0.08782770417 0.08782770417 1 71 71 71 5041
+94	28227 25 16 16 0.088966053439 0.088966053439 1 64 64 64 4096
+95	28252 25 16 16 0.088966053439 0.088966053439 1 64 64 64 4096
+96	28277 48 16 16 0.088966053439 0.088966053439 2 0 1 1 1
+97	28325 25 16 16 0.088966053439 0.088966053439 1 64 64 64 4096
+98	28350 24 16 16 0.088966053439 0.088966053439 1 0 0 0 0
+99	28374 25 16 16 0.088966053439 0.088966053439 1 71 71 71 5041
+100	28399 26 19 19 0.089228422814 0.089228422814 1 64 64 64 4096
+101	28425 26 19 19 0.089228422814 0.089228422814 1 64 64 64 4096
+102	28451 50 19 19 0.089228422814 0.089228422814 2 0 1 1 1
+103	28501 26 19 19 0.089228422814 0.089228422814 1 64 64 64 4096
+104	28527 25 19 19 0.089228422814 0.089228422814 1 0 0 0 0
+105	28552 26 19 19 0.089228422814 0.089228422814 1 71 71 71 5041
+106	28578 26 22 22 0.089523351139 0.089523351139 1 64 64 64 4096
+107	28604 26 22 22 0.089523351139 0.089523351139 1 64 64 64 4096
+108	28630 50 22 22 0.089523351139 0.089523351139 2 0 1 1 1
+109	28680 26 22 22 0.089523351139 0.089523351139 1 64 64 64 4096
+110	28706 25 22 22 0.089523351139 0.089523351139 1 0 0 0 0
+111	28731 26 22 22 0.089523351139 0.089523351139 1 71 71 71 5041
+112	28757 26 25 25 0.089792504552 0.089792504552 1 64 64 64 4096
+113	28783 26 25 25 0.089792504552 0.089792504552 1 64 64 64 4096
+114	28809 50 25 25 0.089792504552 0.089792504552 2 0 1 1 1
+115	28859 26 25 25 0.089792504552 0.089792504552 1 64 64 64 4096
+116	28885 25 25 25 0.089792504552 0.089792504552 1 0 0 0 0
+117	28910 26 25 25 0.089792504552 0.089792504552 1 71 71 71 5041
+118	28936 26 28 28 0.089873400851 0.089873400851 1 64 64 64 4096
+119	28962 26 28 28 0.089873400851 0.089873400851 1 64 64 64 4096
+120	28988 50 28 28 0.089873400851 0.089873400851 2 0 1 1 1
+121	29038 26 28 28 0.089873400851 0.089873400851 1 64 64 64 4096
+122	29064 25 28 28 0.089873400851 0.089873400851 1 0 0 0 0
+123	29089 26 28 28 0.089873400851 0.089873400851 1 71 71 71 5041
+124	29115 26 31 31 0.090262027451 0.090262027451 1 64 64 64 4096
+125	29141 26 31 31 0.090262027451 0.090262027451 1 64 64 64 4096
+126	29167 50 31 31 0.090262027451 0.090262027451 2 0 1 1 1
+127	29217 26 31 31 0.090262027451 0.090262027451 1 64 64 64 4096
+128	29243 25 31 31 0.090262027451 0.090262027451 1 0 0 0 0
+129	29268 26 31 31 0.090262027451 0.090262027451 1 71 71 71 5041
+130	29294 26 33 33 0.092398761897 0.092398761897 1 71 71 71 5041
+131	29320 26 33 33 0.092398761897 0.092398761897 1 64 64 64 4096
+132	29346 26 38 38 0.092473993728 0.092473993728 1 64 64 64 4096
+133	29372 26 38 38 0.092473993728 0.092473993728 1 64 64 64 4096
+134	29398 50 38 38 0.092473993728 0.092473993728 2 0 1 1 1
+135	29448 26 38 38 0.092473993728 0.092473993728 1 64 64 64 4096
+136	29474 25 38 38 0.092473993728 0.092473993728 1 0 0 0 0
+137	29499 26 38 38 0.092473993728 0.092473993728 1 71 71 71 5041
+138	29525 26 41 41 0.092510047472 0.092510047472 1 64 64 64 4096
+139	29551 26 41 41 0.092510047472 0.092510047472 1 64 64 64 4096
+140	29577 50 41 41 0.092510047472 0.092510047472 2 0 1 1 1
+141	29627 26 41 41 0.092510047472 0.092510047472 1 64 64 64 4096
+142	29653 25 41 41 0.092510047472 0.092510047472 1 0 0 0 0
+143	29678 26 41 41 0.092510047472 0.092510047472 1 71 71 71 5041
+vector 144 phasetwo.H1.app[1] throughput:vector ETV
+attr source throughput(packetReceived)
+attr title "throughput, vector"
+attr unit bps
+vector 145 phasetwo.H2.app[1] throughput:vector ETV
+attr source throughput(packetReceived)
+attr title "throughput, vector"
+attr unit bps
+5	29986 23 41 41 0.110260047472 0.110260047472 1 0 0 0 0
+6	30009 23 41 41 0.124728422814 0.124728422814 1 0 0 0 0
+10	30032 24 41 41 0.125762027451 0.125762027451 1 0 0 0 0
+12	30056 23 41 41 0.12332770417 0.12332770417 1 0 0 0 0
+13	30079 24 41 41 0.107623400851 0.107623400851 1 0 0 0 0
+21	30103 24 41 41 0.090398761897 0.090398761897 1 0 0 0 0
+23	30127 24 41 41 0.106716053439 0.106716053439 1 0 0 0 0
+24	30151 24 41 41 0.110223993728 0.110223993728 1 0 0 0 0
+26	30175 24 41 41 0.123063445195 0.123063445195 1 0 0 0 0
+30	30199 24 41 41 0.125292504552 0.125292504552 1 0 0 0 0
+38	30223 24 41 41 0.125023351139 0.125023351139 1 0 0 0 0
+144	30247 25 41 41 0.094477657929 0.094477657929 1 0 0 0 0
+145	30272 25 41 41 0.094477657929 0.094477657929 1 0 0 0 0
+

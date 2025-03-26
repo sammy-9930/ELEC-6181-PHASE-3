@@ -1,0 +1,8 @@
+<filters>
+  <experiment id="default">
+    <filter srcAddress="H1" destPort="1000" gate="0"/> <!-- Voice -->
+	<filter srcAddress="H1" destPort="2000" gate="1"/> <!-- Video -->
+    <filter srcAddress="H1" destPort="3000" gate="2"/> <!-- TCP Data -->
+    <filter srcAddress="H2" gate="0"/>
+  </experiment>
+</filters>
